@@ -1,6 +1,6 @@
 # Ollama Code Pilot
 
-**AI-Powered Code Completions for VS Code using Local Ollama**
+## AI-Powered Code Completions for VS Code using Local Ollama
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
@@ -11,6 +11,7 @@
 ## 🚀 Quick Start (Cross-Platform)
 
 ### Prerequisites
+
 - [Ollama](https://ollama.ai/) installed and running: `ollama serve`
 - Python 3.8+ and Node.js 20+
 - VS Code 1.74+
@@ -18,18 +19,21 @@
 ### One-Command Setup
 
 **Windows:**
+
 ```batch
 cd ollama-code-pilot-manoj548
 setup.bat
 ```
 
 **Linux/macOS:**
+
 ```bash
 cd ollama-code-pilot-manoj548
 ./setup.sh
 ```
 
 **PowerShell (All Platforms):**
+
 ```powershell
 cd ollama-code-pilot-manoj548
 .\bootstrap-dev.ps1
@@ -39,6 +43,7 @@ code .
 Then press **F5** → Select **"Run Extension + FastAPI (Complete Setup)"**
 
 ✅ **Everything auto-configures:**
+
 - Python venv + dependencies
 - Node packages
 - Extension compilation
@@ -53,13 +58,14 @@ Then press **F5** → Select **"Run Extension + FastAPI (Complete Setup)"**
 This project works seamlessly across all major platforms:
 
 | Platform | Setup Script | Python Path | Node Path | Status |
-|----------|-------------|-------------|-----------|---------|
+| -------- | ------------ | ----------- | --------- | ------ |
 | **Windows** | `setup.bat` / `bootstrap-dev.ps1` | `.venv\Scripts\python.exe` | `npm` | ✅ Fully Tested |
 | **Linux** | `setup.sh` / `bootstrap-dev.sh` | `.venv/bin/python` | `npm` | ✅ Compatible |
 | **macOS** | `setup.sh` / `bootstrap-dev.sh` | `.venv/bin/python` | `npm` | ✅ Compatible |
 | **WSL** | `setup.sh` | `.venv/bin/python` | `npm` | ✅ Compatible |
 
 ### Configuration Files
+
 - `config.env` - Shell script configuration
 - `config.ps1` - PowerShell configuration
 - `config.bat` - Windows batch configuration
@@ -71,7 +77,7 @@ Customize paths in these files for your environment.
 ## 📚 Documentation
 
 | Document | Purpose |
-|----------|---------|
+| -------- | ------- |
 | **[SETUP.md](./docs/SETUP.md)** | 📖 Complete setup guide, config options, troubleshooting |
 | **[ARCHITECTURE.md](./docs/ARCHITECTURE.md)** | 🏗️ Project structure, components, data flow |
 | **[ACHIEVEMENTS.md](./docs/ACHIEVEMENTS.md)** | 🎯 Features, milestones, technical details |
@@ -96,18 +102,21 @@ Customize paths in these files for your environment.
 ## 🔧 Available Commands
 
 ### VS Code (Ctrl+Shift+P)
+
 - `Ollama: Complete with Model` - Generate completion
-- `Ollama: Select Model` - Change default model  
+- `Ollama: Select Model` - Change default model
 - `Ollama: Show Status` - Check Ollama status
 - `Ollama: Refresh Models` - Reload model list
 
 ### Debug (F5)
+
 - **Run Extension** - Standard debug mode
 - **Extension Tests** - Run test suite
 - **FastAPI Server** - Debug Python backend
 - **Run Extension + FastAPI** ⭐ - Full stack with auto-setup
 
 ### Tasks (Ctrl+Shift+B)
+
 - **Setup all** - Prepare environment (venv → deps → compile → lint)
 - **Setup and Run All** - Setup + start FastAPI
 - **Build extension** - Compile TypeScript only
@@ -117,7 +126,7 @@ Customize paths in these files for your environment.
 
 ## 🗂️ Project Structure
 
-```
+```text
 src/                        # TypeScript extension
   ├── extension.ts         # Entry point
   ├── completion_provider.ts    # Inline completions
@@ -148,16 +157,18 @@ See [ARCHITECTURE.md](./docs/ARCHITECTURE.md) for full structure.
 ## ⚙️ Configuration
 
 ### Ollama Settings
+
 In VS Code → Settings → search "ollama":
 
 | Setting | Default | Description |
-|---------|---------|-------------|
+| ------- | ------- | ----------- |
 | `providerUrl` | `http://localhost:11434` | Ollama API endpoint |
 | `model` | `codellama:7b` | Default model |
 | `maxTokens` | `100` | Max tokens to generate |
 | `temperature` | `0.2` | Creativity (0.0-1.0) |
 
 ### Available Models
+
 ```powershell
 # Check installed:
 curl http://localhost:11434/api/tags
@@ -167,6 +178,7 @@ ollama pull codellama:13b
 ```
 
 **Recommended**:
+
 - `codellama:7b` (Fast, 7B params) ⭐
 - `codellama:13b` (More accurate)
 - `mistral` (Fast, general)
@@ -178,23 +190,27 @@ See [SETUP.md](./docs/SETUP.md) for all settings.
 ## 🐛 Troubleshooting
 
 ### Ollama not running?
+
 ```powershell
 ollama serve
 # Then: ollama pull codellama:7b
 ```
 
 ### Extension won't compile?
+
 ```powershell
 npm install
 npm run check-types  # See TypeScript errors
 ```
 
 ### FastAPI not starting?
+
 ```powershell
 .venv\Scripts\python.exe -m uvicorn fastapi_server:app --host 0.0.0.0 --port 8000
 ```
 
 ### Tests failing?
+
 ```powershell
 npm test
 npm run test:coverage  # See coverage report
@@ -220,12 +236,14 @@ Test coverage: 30%+ (unit + integration)
 ## 📦 Build & Package
 
 ### Development Build
+
 ```powershell
 npm run compile       # Single compile
 npm run watch         # Auto-recompile on changes
 ```
 
 ### Production Packaging
+
 ```powershell
 npm run package       # Creates .vsix file
 # or
@@ -233,6 +251,7 @@ npm run vscode:prepublish  # Pre-publish hook
 ```
 
 ### Publish to Marketplace
+
 ```powershell
 vsce login            # Auth to marketplace
 vsce publish          # Publish to VS Code Marketplace
@@ -243,6 +262,7 @@ vsce publish          # Publish to VS Code Marketplace
 ## 🔌 API Reference
 
 ### FastAPI (`http://localhost:8000`)
+
 ```powershell
 # Health check
 GET /health
@@ -258,6 +278,7 @@ Body: {
 ```
 
 ### Ollama (Upstream)
+
 ```powershell
 # List models
 GET http://localhost:11434/api/tags
@@ -270,7 +291,8 @@ POST http://localhost:11434/api/generate
 
 ## 👥 Development
 
-### Contribution Welcome!
+### Contribution Welcome
+
 - Fork the repo
 - Create feature branch
 - Follow [ARCHITECTURE.md](./docs/ARCHITECTURE.md) conventions
@@ -278,6 +300,7 @@ POST http://localhost:11434/api/generate
 - Submit PR
 
 ### Code Style
+
 - ESLint + TypeScript strict mode
 - Async/await (no callbacks)
 - Proper error handling
@@ -288,7 +311,7 @@ POST http://localhost:11434/api/generate
 ## 📊 Project Status
 
 | Area | Status |
-|------|--------|
+| ---- | ------ |
 | Extension | ✅ Production Ready |
 | FastAPI Backend | ✅ Production Ready |
 | Documentation | ✅ Comprehensive |
@@ -324,4 +347,4 @@ Apache License 2.0 - See [LICENSE](./LICENSE)
 
 ---
 
-**Made with ❤️ for local AI**
+## Made with ❤️ for local AI
