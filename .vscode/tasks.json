@@ -39,28 +39,78 @@
         {
             "label": "Run FastAPI server",
             "type": "shell",
-            "command": ".venv\\Scripts\\python.exe fastapi_server.py",
+            "command": ".venv\\Scripts\\uvicorn.exe fastapi_server:app --reload --host 0.0.0.0 --port 8000",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
             "isBackground": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
             "problemMatcher": [
                 {
                     "pattern": [
                         {
                             "regexp": "(.*)",
-                            "file": 1,
-                            "location": 2,
-                            "message": 3
+                            "line": 0
                         }
                     ],
                     "background": {
                         "activeOnStart": true,
-                        "beginsPattern": "INFO:     Started server",
-                        "endsPattern": "Uvicorn running on"
+                        "beginsPattern": "^.*(INFO|WARNING):.*",
+                        "endsPattern": "^.*(Uvicorn running on|Application startup complete).*"
                     }
                 }
             ],
+            "group": "build"
+        },
+        {
+            "label": "Lint code",
+            "type": "shell",
+            "command": "npm run lint",
+            "problemMatcher": ["$eslint"],
+            "group": "build"
+        },
+        {
+            "label": "Setup all",
+            "type": "shell",
+            "dependsOn": [
+                "Init Python venv",
+                "Install Node deps",
+                "Build extension",
+                "Lint code"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Setup and Run All",
+            "type": "shell",
+            "dependsOn": [
+                "Setup all",
+                "Run FastAPI server"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
             "group": "build"
         }
     ]

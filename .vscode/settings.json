@@ -14,5 +14,6 @@
       "icon": "terminal-powershell"
     }
   },
-  "terminal.integrated.defaultProfile.windows": "PowerShell (Ollama)"
+  "terminal.integrated.defaultProfile.windows": "PowerShell (Ollama)",
+  "tasks.autoRunUsingActiveTask": true
 }
