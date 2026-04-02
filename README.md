@@ -6,15 +6,30 @@
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![Node](https://img.shields.io/badge/Node-v20+-green)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![Cross Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue)
 
-## 🚀 Quick Start (One Command)
+## 🚀 Quick Start (Cross-Platform)
 
 ### Prerequisites
 - [Ollama](https://ollama.ai/) installed and running: `ollama serve`
 - Python 3.8+ and Node.js 20+
 - VS Code 1.74+
 
-### Run Setup
+### One-Command Setup
+
+**Windows:**
+```batch
+cd ollama-code-pilot-manoj548
+setup.bat
+```
+
+**Linux/macOS:**
+```bash
+cd ollama-code-pilot-manoj548
+./setup.sh
+```
+
+**PowerShell (All Platforms):**
 ```powershell
 cd ollama-code-pilot-manoj548
 .\bootstrap-dev.ps1
@@ -23,13 +38,33 @@ code .
 
 Then press **F5** → Select **"Run Extension + FastAPI (Complete Setup)"**
 
-✅ That's it! Everything auto-configures:
+✅ **Everything auto-configures:**
 - Python venv + dependencies
 - Node packages
 - Extension compilation
 - Code linting
 - FastAPI server (background)
 - VS Code extension host
+
+---
+
+## 🔧 Cross-Platform Compatibility
+
+This project works seamlessly across all major platforms:
+
+| Platform | Setup Script | Python Path | Node Path | Status |
+|----------|-------------|-------------|-----------|---------|
+| **Windows** | `setup.bat` / `bootstrap-dev.ps1` | `.venv\Scripts\python.exe` | `npm` | ✅ Fully Tested |
+| **Linux** | `setup.sh` / `bootstrap-dev.sh` | `.venv/bin/python` | `npm` | ✅ Compatible |
+| **macOS** | `setup.sh` / `bootstrap-dev.sh` | `.venv/bin/python` | `npm` | ✅ Compatible |
+| **WSL** | `setup.sh` | `.venv/bin/python` | `npm` | ✅ Compatible |
+
+### Configuration Files
+- `config.env` - Shell script configuration
+- `config.ps1` - PowerShell configuration
+- `config.bat` - Windows batch configuration
+
+Customize paths in these files for your environment.
 
 ---
 
