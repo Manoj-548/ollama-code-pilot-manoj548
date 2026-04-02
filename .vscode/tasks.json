@@ -13,6 +13,28 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Init Python venv",
+            "type": "shell",
+            "command": "python -m venv .venv && .venv\\Scripts\\pip install -U pip && if (Test-Path requirements.txt) { .venv\\Scripts\\pip install -r requirements.txt }",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Install Node deps",
+            "type": "shell",
+            "command": "npm install",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Build extension",
+            "type": "shell",
+            "command": "npm run compile",
+            "dependsOn": ["Install Node deps", "Init Python venv"],
+            "problemMatcher": [],
+            "group": "build"
         }
     ]
 }

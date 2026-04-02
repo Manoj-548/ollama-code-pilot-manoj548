@@ -11,3 +11,4 @@ yarn-error.log*
 CLAUDE.md
 coverage/
 .c8/
+.venv/

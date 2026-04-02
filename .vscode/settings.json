@@ -1,0 +1,18 @@
+{
+  "window.restoreWindows": "all",
+  "window.restoreFullscreen": true,
+  "files.hotExit": "onExitAndWindowClose",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "workbench.startupEditor": "none",
+  "workbench.editor.restoreViewState": true,
+  "git.openRepositoryInParentFolders": "always",
+  "python.defaultInterpreterPath": "${workspaceFolder}\.venv\Scripts\python.exe",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (Ollama)": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (Ollama)"
+}
